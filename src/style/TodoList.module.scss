@@ -1,0 +1,24 @@
+html{
+    box-sizing: border-box;
+    margin: 0;
+}
+.card{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    color: blue;
+    background:linear-gradient(rgb(167, 212, 238),rgb(146, 184, 219),rgb(201, 147, 233));
+    .container{
+        width: 100%;
+        padding: 10px 20px;
+        // width: 60%;
+        height: 800px;
+        
+        .listWrap{
+            
+        }
+    }
+}
+
+
