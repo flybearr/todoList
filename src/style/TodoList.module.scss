@@ -13,11 +13,56 @@ html{
         width: 100%;
         padding: 10px 20px;
         // width: 60%;
-        height: 800px;
         
+        height: 800px;
         .listWrap{
+            margin: 0 auto;
+            width: 30%;
+            display:flex;
+            flex-direction: column;
+            // justify-content: center;
+            // align-items: center;
+            .list{
+                margin: 0 auto;
+                width: 100%;
+                display: flex;
+                .left{
+                    width: 90%;
+                }
+                .right{
+                    width: 10%;
+                }
+                i{
+                    font-size: .8rem;
+                }
+               
+            }
+            .bottom{
+                width: 100%;
+                display: flex;
+               .search{
+                width: 90%;
+                input{
+                    width: 100%;
+                }
+                }      
+                .add{
+                    cursor:pointer;
+                    background-color: lightblue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 10%;
+                    i{
+                        color: white;
+                        
+                    }
+                }
+            }
             
         }
+        
+        
     }
 }
 

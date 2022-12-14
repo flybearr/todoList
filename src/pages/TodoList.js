@@ -21,13 +21,30 @@ export default function TodoList() {
           {lsitData.map((v, i) => {
             return (
               <div className={styled.list}>
-                <input type="checkbox" 
-                checked={lsitData.completed}
-                />
-                {v}
+                <div className={styled.left}>
+                  <input
+                    type="checkbox"
+                    name={v.text}
+                    id={v.text}
+                    checked={lsitData.completed}
+                  />
+                  <label htmlFor={v.text}>{v.text}</label>
+                </div>
+                <div className={styled.right}>
+                  <i class="fa-solid fa-x"></i>
+                </div>
               </div>
             );
           })}
+          <div>Add to List</div>
+          <div className={styled.bottom}>
+            <div className={styled.search}>
+              <input type="text" />
+            </div>
+            <div className={styled.add}>
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
