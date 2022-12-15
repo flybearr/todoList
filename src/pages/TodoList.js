@@ -115,14 +115,16 @@ export default function TodoList() {
             );
           })}
         </div>
+        <div className={styled.switchArea}>
         <p>Move done things to end</p>
         <div class={styled.switch}>
-    <input class={styled.switchCheckbox} id="switchID1" type="checkbox" name="switch-checkbox" checked={btn} onClick={()=>{alreadyFinsih()}}/>
-    <label class={styled.switchLabel} for="switchID1">
-        <span class={styled.switchTxt} turnOn="1" turnOff="2"></span>
-        <span class={styled.switchRoundBtn}></span>
-    </label>
-</div>
+          <input class={styled.switchCheckbox} id="switchID1" type="checkbox" name="switch-checkbox" checked={btn} onClick={()=>{alreadyFinsih()}}/>
+          <label class={styled.switchLabel} for="switchID1">
+              <span class={styled.switchTxt} turnOn="1" turnOff="2"></span>
+              <span class={styled.switchRoundBtn}></span>
+          </label>
+       </div>
+       </div>
         <div>Add to List</div>
           <div className={styled.bottom}>
             <div className={styled.search}>

@@ -13,6 +13,10 @@ html{
         width: 100%;
         padding: 10px 30px;
         // width: 60%;
+        h1{
+
+            margin-bottom: 0px;
+        }
         .title{
             border-bottom: 2px solid rgb(121, 135, 166);
             padding-bottom: 10px;
@@ -44,15 +48,19 @@ html{
         .listWrap{
             margin: 10px auto 10px auto;
             width: 100%;
-            display:flex;
-            flex-direction: column;
-            border-bottom: 2px solid rgb(121, 135, 166);
+            height: 250px;
+            overflow-y:scroll;
+            padding-right: 30px;
+            overflow-x: hidden;
+            
+            
+              
             .list{
                 border-radius: 3px;
                 border-left: 4.5px solid rgb(109, 109, 231);
-                margin: 0 auto 10px auto;
+                margin: 10px auto;
                 width: 100%;
-                height: 40px;
+                height: 50px;
                 display: flex;
                 align-items: center;
                 background-color: #fff;
@@ -125,7 +133,13 @@ html{
     }
 }
 
-
+.switchArea{
+    display: flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap: 20px;
+    border-top: 2px solid rgb(121, 135, 166);
+}
 
 
 .switch { /*==設定開關鈕的長寬==*/
@@ -164,15 +178,15 @@ html{
   .switchTxt::after {
     content: attr(turnOn);
     padding-left: 10px;
-    background: #1ba0ef;
-    color: #fff;
+    background: rgb(140, 150, 179);
+    color: rgb(140, 150, 179);
   }
   /*開關鈕底色(關閉時)*/
   .switchTxt::before {
     content: attr(turnOff);
     padding-right: 10px;
-    background: #eee;
-    color: #ccc;
+    background: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     text-align: right;
   }
   /*==開關鈕的顏色與大小==*/
@@ -182,17 +196,32 @@ html{
     width: 20px;
     height: 20px;
     margin: 2px;
-    background: rgb(113, 119, 146);
+    background-color: rgb(140, 150, 179);
     top: 3px;
-    right: 25px;
+    right: 30px;
     border-radius: 13px;
     transition: all 0.3s ease-in 0s;
   }
   .switchCheckbox:checked + .switchLabel .switchTxt {
     margin-left: 0;
+    color: rgb(140, 150, 179);
+    
   }
 
   .switchCheckbox:checked + .switchLabel .switchRoundBtn{
-    right: 0;
+    right: 1px;
+    background-color: white;
+  }
+
+
+.listWrap::-webkit-scrollbar {
+    width: 8px;
+  }
+.listWrap::-webkit-scrollbar-track {
+    background: transparent
+  }
+.listWrap::-webkit-scrollbar-thumb {
+    background: #93aceb;
+    border-radius: 10px;
   }
 
