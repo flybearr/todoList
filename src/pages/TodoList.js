@@ -53,9 +53,9 @@ export default function TodoList() {
 
 
   //刪除該項list
-  const delList = (v)=>{
+  const delList = (id)=>{
    const newTodos =  todos.filter((v2,i2)=>{
-      return v2.id !== v.id
+      return v2.id !== id
     })
     setTodos(newTodos)
   }
@@ -76,6 +76,29 @@ export default function TodoList() {
     current.scrollTop = current.scrollHeight
   }
 
+
+// 用在某個id項目，切換editing屬性true/false
+const toggleTodoEditing = (id) => {
+  const newTodos = todos.map((v, i) => {
+    if (v.id === id) return { ...v, editing: !v.editing };
+    //這裡要設定其它項目 editing:false，同時間只有一個被編輯
+    return { ...v, editing: false };
+  });
+
+  setTodos(newTodos);
+};
+
+    //編輯文字
+    const updateText = (id,objValue)=>{
+      const newText = todos.map((v,i)=>{
+        if(v.id === id ) return {...v,...objValue}
+
+        return {...v}
+      })
+      setTodos(newText);
+    }
+
+
     // 用在某個id項目，切換completed屬性true/false
     const toggleTodoCompleted = (id) => {
       const newTodos = todos.map((v, i) => {
@@ -88,6 +111,8 @@ export default function TodoList() {
       setOriginTodos(newTodos)
     };
 
+
+    //進度條隨時更新進度
     useEffect( ()=>{
       progressBarFunction()
     },[todos])
@@ -103,7 +128,7 @@ export default function TodoList() {
 
         <ProgressBar howPersent={howPersent}/>       
 
-        <List delList={delList} todos={todos} toggleTodoCompleted={toggleTodoCompleted} scrollRef={scrollRef}/>
+        <List delList={delList} todos={todos} toggleTodoCompleted={toggleTodoCompleted} scrollRef={scrollRef} updateText={updateText} toggleTodoEditing={toggleTodoEditing} />
 
         <SwitchBtn  btn={btn} alreadyFinsih={alreadyFinsih} />
 

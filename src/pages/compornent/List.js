@@ -1,24 +1,32 @@
-import React,{useRef,useEffect} from 'react'
+import React from 'react'
 import styled from "../../style/TodoList.module.scss";
-export default function List({todos,toggleTodoCompleted,delList,scrollRef}) {
+import EditForm from './todoItem/EditForm';
+export default function List({todos,toggleTodoCompleted,delList,scrollRef,updateText,toggleTodoEditing}) {
     
   return (
     <div className={styled.listWrap} ref={scrollRef}>
           {todos.map((v, i) => {
             return (
 
-              <div className={styled.list}>
+              <div className={styled.list} key={i}>
                 <div className={styled.left}>
                   <input
                     type="checkbox"
                     id={v.text}
                     checked={v.completed}
-                    onClick={()=>{toggleTodoCompleted(v.id)}}
+                    onChange={()=>{toggleTodoCompleted(v.id)}}
                   />
-                  <label htmlFor={v.text} style={v.completed ?{textDecoration:'line-through'}:{}}>{v.text}</label>
+                  {v.editing ? <EditForm updateText={updateText} id={v.id} text={v.text}/> : <label htmlFor={v.text} style={v.completed ?{textDecoration:'line-through'}:{}}>{v.text}</label>}
+                 
                 </div>
                 <div className={styled.right}>
-                  <i class="fa-solid fa-xmark" onClick={()=>{delList(v)}}></i>
+                  
+
+                  {v.editing ? '': <button onClick={()=>{
+                    toggleTodoEditing(v.id)
+                  }}>編輯</button> }
+
+                  <i className="fa-solid fa-xmark" onClick={()=>{delList(v.id)}}></i>
                 </div>
               </div>
             );
