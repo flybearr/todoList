@@ -28,10 +28,15 @@ export default function TodoList() {
     
     if(!btn){
       newTodos.sort((a,b)=>a.completed-b.completed)
+      const current = scrollRef.current       
+      current.scrollTop = current.scrollHeight
       setTodos(newTodos)
     }else{
+      const current = scrollRef.current       
+      current.scrollTop = 0
       setTodos(originTodos)
     }
+    
     setBtn(!btn)
   }
 

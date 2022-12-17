@@ -15,8 +15,10 @@ export default function List({todos,toggleTodoCompleted,delList,scrollRef,update
                     id={v.text}
                     checked={v.completed}
                     onChange={()=>{toggleTodoCompleted(v.id)}}
+                    className={styled.v}
                   />
-                  {v.editing ? <EditForm updateText={updateText} id={v.id} text={v.text}/> : <label htmlFor={v.text} style={v.completed ?{textDecoration:'line-through'}:{}}>{v.text}</label>}
+                  <label htmlFor={v.text} className={styled.check} ></label>
+                  {v.editing ? <EditForm updateText={updateText} id={v.id} text={v.text}/> : <p style={v.completed ?{textDecoration:'line-through'}:{}}>{v.text}</p>}
                  
                 </div>
                 <div className={styled.right}>

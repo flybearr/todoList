@@ -2,7 +2,7 @@ $colors: (red, green, blue, yellow, purple, orange, pink);
 $num: 50;
 
 button{
-  width: 40px;
+  width: 50px;
   height: 30px;
   border: none;
   border-radius: 5px;
@@ -17,7 +17,7 @@ html{
     margin: 0;
 }
 .card{
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     width: 500px;
     display: flex;
     justify-content: center;
@@ -39,6 +39,9 @@ html{
             display: flex;
             align-items: center;
             gap: 5px;
+            p{
+              font-weight: 400;
+            }
             .empty{
                 width: 100%;
                 height: 100%;
@@ -88,16 +91,41 @@ html{
                     gap: 10px;
                     margin-left: 10px;
                     width: 90%;
-                    label{
-                        font-size: 1.1rem;
-                        line-height: 1.2rem;
-                       
+
+                    .check{
+                      display: inline-block;
+                      position: relative;
+                      width: 18px;
+                      height: 18px;
+                      border: 1px solid rgb(129, 128, 128);
+                      border-radius: 3.5px;
+                    }
+                    .check::after {
+                      content: '';
+                      position: absolute;
+                      border-right: 2px solid white;
+                      border-bottom: 2px solid white;
+                      transform: rotate(45deg);
+                      width: 5px;
+                      height: 10px;
+                      top: 2px;
+                      left: 7px;
+                      opacity: 0;
+                    }
+                    .v{
+                      display: none;
+                    }
+                    .v:checked+.check {
+                      background-color: #7B92C6;
+                    }
+                    .v:checked +.check::after{
+                      opacity: 1;
+                      
                     }
                     
-                    input[type=checkbox]{
-                        width: 20px;
-                        height: 20px;
-                       
+                    p{
+                      font-size: 1.1rem;
+                      line-height: 1.2rem;
                     }
                    
                 }
@@ -108,7 +136,7 @@ html{
                     width: 20%;
                     
                     button{
-                      width: 70px;
+                      width: 50px;
                       height: 30px;
                       border: none;
                       border-radius: 5px;
@@ -158,7 +186,7 @@ html{
                 align-items: center;
                 transition: .2s;
                 &:hover{
-                  background-color: blueviolet;
+                  background-color: rgb(202, 167, 235);
                 }
                 
                 i{
@@ -268,7 +296,7 @@ html{
     background: transparent
   }
 .listWrap::-webkit-scrollbar-thumb {
-    background: #93aceb;
+    background: #b7bef1;
     border-radius: 10px;
   }
 
@@ -277,6 +305,7 @@ html{
   .boxWrap{
     position: fixed;
     z-index: 10;
+    margin-top: -50px;
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.477);
