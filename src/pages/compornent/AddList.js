@@ -9,6 +9,10 @@ export default function AddList({newText,setNewText,addTodo,setOriginTodos}) {
               <input type="text"  value={newText} onChange={(e)=>{
                 setNewText(e.target.value)
                 setOriginTodos(e.target.value)
+              }} onKeyDown={(e)=>{
+                if (e.key === 'Enter') {
+                  addTodo(newText)
+                }
               }}/>
             </div>
             <div className={styled.add} onClick={()=>{

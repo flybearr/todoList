@@ -61,19 +61,25 @@ export default function TodoList() {
   }
   //新增該做的事
   const addTodo = async (text)=>{
-    const newTodo = {
-      id: Number(new Date()),
-      text: text,
-      completed: false,
-      editing: false,
-    };
-    // 加入輸入的文字到todos陣列中
-    // 三步驟的方式(拷貝 -> 加入到新陣列中 -> 設定回state)
-    const newTodos = [ ...todos,newTodo];
-    await setTodos(newTodos);
-    await setOriginTodos(newTodos)
-    const current = scrollRef.current
-    current.scrollTop = current.scrollHeight
+    if(newText){
+      const newTodo = {
+        id: Number(new Date()),
+        text: text,
+        completed: false,
+        editing: false,
+      };
+      // 加入輸入的文字到todos陣列中
+      // 三步驟的方式(拷貝 -> 加入到新陣列中 -> 設定回state)
+      const newTodos = [ ...todos,newTodo];
+      await setTodos(newTodos);
+      await setOriginTodos(newTodos)
+      const current = scrollRef.current
+      current.scrollTop = current.scrollHeight
+      setNewText('')
+    }else{
+      return
+    }
+    
   }
 
 
