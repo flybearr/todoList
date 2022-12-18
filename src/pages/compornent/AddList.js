@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "../../style/TodoList.module.scss";
-export default function AddList({newText,setNewText,addTodo,setOriginTodos}) {
+export default function AddList({newText,setNewText,addTodo}) {
   return (
     <div>
         <div style={{marginBottom:'10px'}}>Add to List</div>
@@ -8,7 +8,6 @@ export default function AddList({newText,setNewText,addTodo,setOriginTodos}) {
             <div className={styled.search}>
               <input type="text"  value={newText} onChange={(e)=>{
                 setNewText(e.target.value)
-                setOriginTodos(e.target.value)
               }} onKeyDown={(e)=>{
                 if (e.key === 'Enter') {
                   addTodo(newText)

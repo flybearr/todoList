@@ -1,23 +1,26 @@
 import React from 'react'
 import styled from "../../style/TodoList.module.scss";
 import EditForm from './todoItem/EditForm';
-export default function List({todos,toggleTodoCompleted,delList,scrollRef,updateText,toggleTodoEditing}) {
-    
+export default function List({todos,toggleTodoCompleted,delList,scrollRef,updateText,toggleTodoEditing,btn}) {
+  const newTodos = [...todos]
+  const alreadySort = newTodos.sort((a,b)=> a.completed - b.completed)
+  const display = btn ? alreadySort : todos
+
   return (
     <div className={styled.listWrap} ref={scrollRef}>
-          {todos.map((v, i) => {
+          {display.map((v, i) => {
             return (
 
               <div className={styled.list} key={i}>
                 <div className={styled.left}>
                   <input
                     type="checkbox"
-                    id={v.text}
+                    id={v.id}
                     checked={v.completed}
                     onChange={()=>{toggleTodoCompleted(v.id)}}
                     className={styled.v}
                   />
-                  <label htmlFor={v.text} className={styled.check} ></label>
+                  <label htmlFor={v.id} className={styled.check} ></label>
                   {v.editing ? <EditForm updateText={updateText} id={v.id} text={v.text}/> : <p style={v.completed ?{textDecoration:'line-through'}:{}}>{v.text}</p>}
                  
                 </div>

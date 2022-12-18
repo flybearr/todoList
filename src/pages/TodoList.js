@@ -11,7 +11,6 @@ export default function TodoList() {
   
   // const originTodos = [...todos]
   const [todos,setTodos] =useState(lsitData)
-  const [originTodos,setOriginTodos] =useState(lsitData)
   const [newText,setNewText] =useState('')
   const [btn,setBtn] =useState(false)
   const [show,setShow]=useState(false)
@@ -24,17 +23,14 @@ export default function TodoList() {
 
   //排序已完成的
   const alreadyFinsih=()=>{
-    const newTodos = [...todos]
+    
     
     if(!btn){
-      newTodos.sort((a,b)=>a.completed-b.completed)
       const current = scrollRef.current       
       current.scrollTop = current.scrollHeight
-      setTodos(newTodos)
     }else{
       const current = scrollRef.current       
       current.scrollTop = 0
-      setTodos(originTodos)
     }
     
     setBtn(!btn)
@@ -77,7 +73,6 @@ export default function TodoList() {
       // 三步驟的方式(拷貝 -> 加入到新陣列中 -> 設定回state)
       const newTodos = [ ...todos,newTodo];
       await setTodos(newTodos);
-      await setOriginTodos(newTodos)
       const current = scrollRef.current
       current.scrollTop = current.scrollHeight
       setNewText('')
@@ -118,8 +113,8 @@ const toggleTodoEditing = (id) => {
         return { ...v };
       });
       
+      console.log(id);
       setTodos(newTodos);
-      setOriginTodos(newTodos)
     };
 
 
@@ -139,11 +134,11 @@ const toggleTodoEditing = (id) => {
 
         <ProgressBar howPersent={howPersent}/>       
 
-        <List delList={delList} todos={todos} toggleTodoCompleted={toggleTodoCompleted} scrollRef={scrollRef} updateText={updateText} toggleTodoEditing={toggleTodoEditing} />
+        <List btn={btn} delList={delList} todos={todos} toggleTodoCompleted={toggleTodoCompleted} scrollRef={scrollRef} updateText={updateText} toggleTodoEditing={toggleTodoEditing} />
 
         <SwitchBtn  btn={btn} alreadyFinsih={alreadyFinsih} />
 
-        <AddList newText={newText} setNewText={setNewText} addTodo={addTodo} setOriginTodos={setOriginTodos}/>
+        <AddList newText={newText} setNewText={setNewText} addTodo={addTodo}/>
       </div>
     </div>
     </>
