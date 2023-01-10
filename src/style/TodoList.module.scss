@@ -420,3 +420,9 @@ html{
         transform: rotate3d(0,1,0,360deg);
       }
     }
+
+    @media screen and (max-width:768px) { 
+      .card{
+        width: 100%;
+      }
+    }
